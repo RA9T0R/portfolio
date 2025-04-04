@@ -7,7 +7,6 @@ import {
   NavItems,
   MobileNav,
   NavbarLogo,
-  NavbarButton,
   MobileNavHeader,
   MobileNavToggle,
   MobileNavMenu,
@@ -26,12 +25,18 @@ const NavbarMain = () => {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          <div className="flex items-center gap-4">
-            <NavbarButton className="bg-black dark:bg-white rounded-full shadow-md shadow-black dark:shadow-white flex items-center justify-center cursor-pointer" type='button' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-              {theme === 'dark' 
-              ? <Sun className="text-white dark:text-black"/>
-              : <Moon className="text-white dark:text-black"/>}
-            </NavbarButton>
+          <div className="flex items-center gap-4 z-20">
+            <button
+              className="bg-black dark:bg-white rounded-full shadow-md shadow-black dark:shadow-white flex items-center justify-center cursor-pointer p-2"
+              type="button"
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? (
+                <Sun className="text-white dark:text-black" />
+              ) : (
+                <Moon className="text-white dark:text-black" />
+              )}
+            </button>
           </div>
         </NavBody>
  
@@ -59,12 +64,12 @@ const NavbarMain = () => {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
-              <NavbarButton className="bg-black dark:bg-white rounded-full shadow-md shadow-black dark:shadow-white flex items-center justify-center cursor-pointer" type='button' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+            <div className="flex w-full flex-col gap-4 z-20">
+              <button className="bg-black dark:bg-white rounded-full shadow-md shadow-black dark:shadow-white flex items-center justify-center cursor-pointer p-2" type='button' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
                 {theme === 'dark' 
                 ? <Sun className="text-white dark:text-black"/>
                 : <Moon className="text-white dark:text-black"/>}
-              </NavbarButton>
+              </button>
             </div>
           </MobileNavMenu>
         </MobileNav>
