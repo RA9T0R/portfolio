@@ -29,7 +29,7 @@ interface NavItemsProps {
     link: string;
   }[];
   className?: string;
-  onItemClick?: () => void;
+  onItemClick?: (e: React.MouseEvent<HTMLAnchorElement>, link: string) => void;
 }
 
 interface MobileNavProps {
@@ -120,15 +120,14 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
     if (link.startsWith("#")) {
-      e.preventDefault(); // Prevent instant jump
+      e.preventDefault(); 
 
       const section = document.querySelector(link);
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
       }
     }
-
-    if (onItemClick) onItemClick(e);
+    if (onItemClick) onItemClick(e, link);
   };
 
   return (
@@ -142,7 +141,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       {items.map((item, idx) => (
         <Link
           onMouseEnter={() => setHovered(idx)}
-          onClick={(e) => handleClick(e, item.link)}
+          onClick={(e) => handleClick(e, item.link)} // Pass both e and item.link
           className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
           key={`link-${idx}`}
           href={item.link}
