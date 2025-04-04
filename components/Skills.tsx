@@ -11,6 +11,7 @@ const Skills = () => {
       <div className="flex flex-col gap-5">
         <p>Languages</p>
         <div className="flex flex-wrap lg:flex-nowrap gap-4">
+          <SkillButton image='/c.svg' link="https://www.w3schools.com/c/"/>
           <SkillButton image='/cpp.svg' link="https://www.w3schools.com/cpp/"/>
           <SkillButton image="/py.svg" link="https://www.python.org/"/>
           <SkillButton image="/java.svg" link="https://www.java.com/en/"/>
@@ -23,12 +24,18 @@ const Skills = () => {
         <div className="flex flex-wrap lg:flex-nowrap gap-4">
           <SkillButton image='/html.svg' link="https://www.w3schools.com/html/"/>
           <SkillButton image='/css.svg' link="https://www.w3schools.com/css/"/>
+          <SkillButton image="/tail.svg" link="https://tailwindcss.com/"/>
           <SkillButton image="/re.svg" link="https://react.dev/"/>
           {theme === 'dark' 
             ? <SkillButton image="/nextD.svg" link="https://nextjs.org/"/>
             : <SkillButton image="/next.svg" link="https://nextjs.org/"/>}
           <SkillButton image="/nodejs.svg" link="https://nodejs.org/en"/>
-          <SkillButton image="/tail.svg" link="https://tailwindcss.com/"/>
+          {theme === 'dark' 
+            ? <SkillButton image="/express.svg" link="https://expressjs.com/"/>
+            : <SkillButton image="/expressW.svg" link="https://expressjs.com/"/>}
+          {theme === 'dark' 
+            ? <SkillButton image="/socket.svg" link="https://socket.io/"/>
+            : <SkillButton image="/socketW.svg" link="https://socket.io/"/>}
         </div>
       </div>
       <div className="flex flex-col gap-5">
@@ -47,6 +54,7 @@ const Skills = () => {
             ? <SkillButton image="/githubD.svg" link="https://github.com/"/>
             : <SkillButton image="/github.svg" link="https://github.com/"/>}
           <SkillButton image='/figma.svg' link="https://www.figma.com/"/>
+          <SkillButton image='/pho.svg' link="https://www.figma.com/"/>
         </div>
       </div>
     </div>

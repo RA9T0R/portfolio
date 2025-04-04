@@ -37,7 +37,7 @@ const AboutMe = () => {
               </div>
             </div>
             <Image
-              className="hidden lg:block rounded-lg"
+              className="hidden lg:block rounded-lg border-4 border-Main dark:border-white"
               src='/Golf.jpg'
               alt="logo"
               width={350}

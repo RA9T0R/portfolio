@@ -8,17 +8,17 @@ import Footer from "@/components/Footer";
 
 const page = () => {
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       <CursorGradient />
-      <NavbarMain/>
-      <div className="overflow-hidden">
-        <Hero/>
-        <AboutMe/>
-        <Features/>
-        <Projects/>
+      <NavbarMain />
+      <div className="w-full lg:w-auto flex flex-col items-center justify-center">
+        <Hero />
+        <AboutMe />
+        <Features />
+        <Projects />
       </div>
-      <Footer/>
-    </>
+      <Footer />
+    </div>
   )
 }
 
