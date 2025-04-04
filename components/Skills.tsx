@@ -1,64 +1,52 @@
+'use client'
 import SkillButton from "./ui/SkillButton"
-import cpp from '@/assets/cpp.png'
-import python from '@/assets/python.png'
-import java from '@/assets/java.png'
-import js from '@/assets/js.png'
-import ts from '@/assets/ts.png'
-
-import html from '@/assets/html.png'
-import css from '@/assets/css.png'
-import react from '@/assets/react.png'
-import next from '@/assets/next.png'
-import nodejs from '@/assets/nodejs.png'
-import tailwind from '@/assets/tailwind.png'
-
-import mongo from '@/assets/mongo.png'
-import mysql from '@/assets/MySQL.png'
-import PostgreSQL from '@/assets/PostgreSQL.png'
-
-import git from '@/assets/git.png'
-import github from '@/assets/github.png'
-import figma from '@/assets/figma.png'
-
+import { useTheme } from 'next-themes'
 
 const Skills = () => {
+
+  const {theme} = useTheme()
+
   return (
-    <div className="text-xl flex flex-col justify-center text-Main dark:text-white gap-5 mb-4 p-2">
+    <div className="text-xl md:text-2xl flex flex-col justify-center text-Main dark:text-white gap-5 mb-4 p-2">
       <div className="flex flex-col gap-5">
         <p>Languages</p>
         <div className="flex flex-wrap lg:flex-nowrap gap-4">
-          <SkillButton image={cpp} link="https://www.w3schools.com/cpp/"/>
-          <SkillButton image={python} link="https://www.python.org/"/>
-          <SkillButton image={java} link="https://www.java.com/en/"/>
-          <SkillButton image={js} link="https://www.w3schools.com/js/"/>
-          <SkillButton image={ts} link="https://www.typescriptlang.org/"/>
+          <SkillButton image='/cpp.svg' link="https://www.w3schools.com/cpp/"/>
+          <SkillButton image="/py.svg" link="https://www.python.org/"/>
+          <SkillButton image="/java.svg" link="https://www.java.com/en/"/>
+          <SkillButton image="/js.svg" link="https://www.w3schools.com/js/"/>
+          <SkillButton image="/ts.svg" link="https://www.typescriptlang.org/"/>
         </div>
       </div>
       <div className="flex flex-col gap-5">
         <p>Website</p>
         <div className="flex flex-wrap lg:flex-nowrap gap-4">
-          <SkillButton image={html} link="https://www.w3schools.com/html/"/>
-          <SkillButton image={css} link="https://www.w3schools.com/css/"/>
-          <SkillButton image={react} link="https://react.dev/"/>
-          <SkillButton image={next} link="https://nextjs.org/"/>
-          <SkillButton image={nodejs} link="https://nodejs.org/en"/>
-          <SkillButton image={tailwind} link="https://tailwindcss.com/"/>
+          <SkillButton image='/html.svg' link="https://www.w3schools.com/html/"/>
+          <SkillButton image='/css.svg' link="https://www.w3schools.com/css/"/>
+          <SkillButton image="/re.svg" link="https://react.dev/"/>
+          {theme === 'dark' 
+            ? <SkillButton image="/nextD.svg" link="https://nextjs.org/"/>
+            : <SkillButton image="/next.svg" link="https://nextjs.org/"/>}
+          <SkillButton image="/nodejs.svg" link="https://nodejs.org/en"/>
+          <SkillButton image="/tail.svg" link="https://tailwindcss.com/"/>
         </div>
       </div>
       <div className="flex flex-col gap-5">
         <p>Database</p>
         <div className="flex flex-wrap lg:flex-nowrap gap-4">
-          <SkillButton image={mongo} link="https://www.mongodb.com/"/>
-          <SkillButton image={mysql} link="https://www.mysql.com/"/>
-          <SkillButton image={PostgreSQL} link="https://www.postgresql.org/"/>
+          <SkillButton image='/mongo.svg' link="https://www.mongodb.com/"/>
+          <SkillButton image='/mysql.svg' link="https://www.mysql.com/"/>
+          <SkillButton image='/postgreSQL.svg' link="https://www.postgresql.org/"/>
         </div>
       </div>
       <div className="flex flex-col gap-5">
         <p>Other</p>
         <div className="flex flex-wrap lg:flex-nowrap gap-4">
-          <SkillButton image={git} link="https://git-scm.com/"/>
-          <SkillButton image={github} link="https://github.com/"/>
-          <SkillButton image={figma} link="https://www.figma.com/"/>
+          <SkillButton image='/git.svg' link="https://git-scm.com/"/>
+          {theme === 'dark' 
+            ? <SkillButton image="/githubD.svg" link="https://github.com/"/>
+            : <SkillButton image="/github.svg" link="https://github.com/"/>}
+          <SkillButton image='/figma.svg' link="https://www.figma.com/"/>
         </div>
       </div>
     </div>

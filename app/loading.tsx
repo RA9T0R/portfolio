@@ -1,10 +1,10 @@
-
-const loading = () => {
+// pages/loading.js
+const Loading = () => {
   return (
-    <div className="text-black dark:text-white">
-      loading...
+    <div className="flex justify-center items-center min-h-screen bg-gray-800 text-white">
+      <div className="text-3xl font-semibold animate-pulse">Loading...</div>
     </div>
-  )
-}
+  );
+};
 
-export default loading
+export default Loading;

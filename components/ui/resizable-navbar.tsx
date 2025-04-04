@@ -64,13 +64,14 @@ export const Navbar = ({ children, className }: NavbarProps) => {
     } else {
       setVisible(false);
     }
+    console.log(visible)
   });
 
   return (
     <motion.div
       ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("sticky inset-x-0 top-0 z-40 w-full", className)}
+      className={cn("sticky inset-x-0 top-5 z-50", className)}
+      
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -117,6 +118,19 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, link: string) => {
+    if (link.startsWith("#")) {
+      e.preventDefault(); // Prevent instant jump
+
+      const section = document.querySelector(link);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    if (onItemClick) onItemClick(e);
+  };
+
   return (
     <motion.div
       onMouseLeave={() => setHovered(null)}
@@ -128,7 +142,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       {items.map((item, idx) => (
         <Link
           onMouseEnter={() => setHovered(idx)}
-          onClick={onItemClick}
+          onClick={(e) => handleClick(e, item.link)}
           className="relative px-4 py-2 text-neutral-600 dark:text-neutral-300"
           key={`link-${idx}`}
           href={item.link}
@@ -145,6 +159,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
     </motion.div>
   );
 };
+
 
 export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
@@ -196,7 +211,7 @@ export const MobileNavMenu = ({
   children,
   className,
   isOpen,
-  onClose,
+  // onClose,
 }: MobileNavMenuProps) => {
   return (
     <AnimatePresence>

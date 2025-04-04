@@ -13,23 +13,9 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
+import {navItems} from "@/data/index";
 
 const NavbarMain = () => {
-  const navItems = [
-    {
-      name: "Main",
-      link: "#Hero",
-    },
-    {
-      name: "About Me",
-      link: "#About Me",
-    },
-    {
-      name: "Contact",
-      link: "#contact",
-    },
-  ];
-
   const {theme, setTheme} = useTheme()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
