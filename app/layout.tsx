@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   title: "Phongphat's Portfolio",
   description: "Phongphat's Portfolio",
   keywords: ["Phongphat", "Portfolio"],
+  icons: {
+    icon: '/favicon.jpg',
+  },
 };
 
 export default function RootLayout({

@@ -1,6 +1,8 @@
 import {projectItems} from '@/data/index'
 import { PinContainer } from '@/components/ui/3d-pin'
 import MainText from './MainText'
+import Image from "next/image";
+
 const Projects = () => {
   return (
     <section id="Project" className="relative w-full flex flex-col items-center justify-center text-Main dark:text-white">
@@ -12,9 +14,9 @@ const Projects = () => {
             <PinContainer title={link} href={link}>
               <div className='relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden sm:h-[40vh] h-[30vh] mb-10 border border-Main dark:border-white/[0.1] rounded-2xl'>
                 <div className='relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#131632d]'>
-                  <img src="/bg.png" alt="bg-img" />
+                  <Image src="/bg.png" alt="bg-img" width={1920} height={1080} priority />
                 </div>
-                <img src={img} alt={title} className='z-10 absolute bottom-0' />
+                <Image src={img} alt={title} className='z-10 absolute bottom-0' width={1920} height={1080} priority />
               </div>
               <h1 className='font-bold lg:text-2xl md:text-xl text-base line-clamp-1'>
                 {title}
@@ -26,7 +28,7 @@ const Projects = () => {
                 <div className='flex items-center'>
                   {iconLists.map((icon, index) => (
                     <div key={index} className='border border-white/[0.2] rounded-full bg-Main lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center' style={{transform:`translateX(-${5*index*2}px)`}}>
-                      <img src={icon} alt={icon} className='p-2' />
+                      <Image src={icon} alt={icon} width={1920} height={1080} className='p-2' priority  />
                     </div>
                   ))}
                 </div>
