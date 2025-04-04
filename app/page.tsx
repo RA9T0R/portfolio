@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 
 const page = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div>
       <CursorGradient />
       <NavbarMain />
       <div className="w-full lg:w-auto flex flex-col items-center justify-center">
