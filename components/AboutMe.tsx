@@ -19,10 +19,10 @@ const AboutMe = () => {
 
       <MainText text={'About Me'}/>
       <div className="w-[90%] lg:w-[85%] flex flex-col lg:flex-row py-8 text-4xl sm:text-7xl gap-6 z-20">
-        <div className="flex flex-col items-center gap-8">
-          <p className='w-full text-xl md:text-2xl'>I’m a second-year university student eager to gain hands-on experience during the school break. Passionate about web development, web design. I thrive on learning new technologies quickly and adapting to challenges. Additionally, I’m exploring 3D design and looking forward to experimenting with it in the future.</p>
+        <div className="lg:w-[75%] flex flex-col items-center gap-8">
+          <p className='text-xl md:text-2xl'>I’m a second-year university student eager to gain hands-on experience during the school break. Passionate about web development, web design. I thrive on learning new technologies quickly and adapting to challenges. Additionally, I’m exploring 3D design and looking forward to experimenting with it in the future.</p>
 
-          <div className="flex flex-col md:flex-row lg:flex-col xl:flex-row gap-6 w-full ">
+          <div className="flex flex-col md:flex-row lg:flex-col 2xl:flex-row gap-6 w-full ">
             <div className="flex flex-col text-xl md:text-2xl gap-3 md:gap-6">
               <p className="text-3xl md:text-6xl">Education</p>
               <div>
@@ -37,7 +37,7 @@ const AboutMe = () => {
               </div>
             </div>
             <Image
-              className="hidden lg:block rounded-lg border-4 border-Main dark:border-white"
+              className="lg:w-72 xl:w-80 hidden lg:block rounded-lg border-4 border-Main dark:border-white"
               src='/Golf.jpg'
               alt="logo"
               width={350}
@@ -48,8 +48,8 @@ const AboutMe = () => {
 
         <hr className="block lg:hidden w-full text-white z-20"/>
 
-        <div className="flex flex-col items-center">
-          <h1 className="text-3xl md:text-6xl mb-4 md:mb-8">My Skill</h1>
+        <div className="flex flex-col">
+          {/* <h1 className="text-3xl md:text-6xl mb-4 md:mb-8">My Skill</h1> */}
           <Skills/>
         </div>
       </div>

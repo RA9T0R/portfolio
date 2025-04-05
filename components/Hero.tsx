@@ -36,7 +36,7 @@ const Hero = () => {
         <div className="absolute inset-0 w-full h-full bg-white dark:bg-Main [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
 
-      <Link href='https://github.com/RA9T0R' className="relative -top-30 sm:-top-25 z-30 bg-[#ff5d38] text-white px-4 py-2 rounded-md cursor-pointer hover:scale-110 transition-all duration-200" type="button">
+      <Link href='https://github.com/RA9T0R' className="relative -top-30 sm:-top-25 z-30 bg-[#C62300] dark:bg-[#ff5d38] text-white px-4 py-2 rounded-md cursor-pointer hover:scale-110 transition-all duration-200" type="button">
         My Github
       </Link>
 

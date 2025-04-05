@@ -75,7 +75,7 @@ export const navItems = [
       title: "QUCIKBITES",
       des: "Built a real-time food ordering system QR-based ordering with MERN STACK. with dual interfaces for customers and admins",
       img: "/QB.png", //p1.svg
-      iconLists: ["/re.svg", "/tail.svg", "/js.svg", "/mongo.svg", "/nodejs.svg"],
+      iconLists: ["/re.svg", "/tail.svg", "/js.svg", "/nodejs.svg","/socketW.svg", "/mongo.svg"],
       link: "https://github.com/RA9T0R/QuickBites",
     },
     {
