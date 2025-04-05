@@ -54,7 +54,7 @@ const Skills = () => {
             ? <SkillButton image="/githubD.svg" link="https://github.com/"/>
             : <SkillButton image="/github.svg" link="https://github.com/"/>}
           <SkillButton image='/figma.svg' link="https://www.figma.com/"/>
-          <SkillButton image='/pho.svg' link="https://www.figma.com/"/>
+          <SkillButton image='/pho.svg' link="https://www.adobe.com/th_th/creativecloud/business/teams/photoshop.html"/>
         </div>
       </div>
     </div>
