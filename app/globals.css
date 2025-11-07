@@ -1,26 +1,41 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@theme {
+    /* ------------------------------------------------------------------- */
+    /* LIGHT MODE VARIABLES (Cool & Crisp) */
+    /* ------------------------------------------------------------------- */
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    /* BACKGROUNDS & NEUTRALS */
+    --color-bg: #F8F9FA;         /* Main background (Cloud White) */
+    --color-surface: #F1F3F5;    /* Cards / panels (Very Light Gray) */
+    --color-text: #333333;        /* Main text (Soft Charcoal) */
+    --color-subtext: #6B7280;     /* Muted text (A standard mid-gray for captions) */
+    --color-border: #D1D5DB;      /* Borders (A light, crisp gray) */
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    /* PRIMARY BRAND COLORS (Power & Peace) */
+    --color-primary: #206BD0;    /* Secondary Action (Deep Blue) */
+    --color-secondary: #20C3D0;  /* Primary Accent (Aqua) */
+    --color-power: #D02D20;      /* Power Accent / CTA (Red-Orange) */
+
+
+    /* ------------------------------------------------------------------- */
+    /* DARK MODE VARIABLES (Deep Sea Abyss) */
+    /* ------------------------------------------------------------------- */
+    --color-Dark_bg: #121212;     /* Deep dark background (Near Black Gray) */
+    --color-Dark_surface: #1E1E1E; /* Cards / panels (Card Surface Gray) */
+    --color-Dark_text: #EFEFEF;   /* Main text (Soft White) */
+    --color-Dark_subtext: #A0AEC0; /* Muted text (Lighter gray for readability) */
+    --color-Dark_border: #2D3748;  /* Subtle borders (Darker border) */
+
+    /* PRIMARY BRAND COLORS (Slightly Desaturated for Comfort) */
+    --color-Dark_primary: #307bdf; /* Secondary Action (Deep Blue - Muted) */
+    --color-Dark_secondary: #30d3df; /* Primary Accent (Aqua - Muted) */
+    --color-Dark_power: #df3b30;    /* Power Accent / CTA (Red-Orange - Muted) */
+
+    --font-space-grotesk: var(--font-space-grotesk);
 }
