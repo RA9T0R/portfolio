@@ -18,8 +18,8 @@
     --color-border: #D1D5DB;      /* Borders (A light, crisp gray) */
 
     /* PRIMARY BRAND COLORS (Power & Peace) */
-    --color-primary: #206BD0;    /* Secondary Action (Deep Blue) */
-    --color-secondary: #20C3D0;  /* Primary Accent (Aqua) */
+    --color-primary: #20C3D0;    /* Secondary Action (Deep Blue) */
+    --color-secondary: #206BD0;  /* Primary Accent (Aqua) */
     --color-power: #D02D20;      /* Power Accent / CTA (Red-Orange) */
 
 
@@ -29,13 +29,13 @@
     --color-Dark_bg: #121212;     /* Deep dark background (Near Black Gray) */
     --color-Dark_surface: #1E1E1E; /* Cards / panels (Card Surface Gray) */
     --color-Dark_text: #EFEFEF;   /* Main text (Soft White) */
-    --color-Dark_subtext: #A0AEC0; /* Muted text (Lighter gray for readability) */
+    --color-Dark_subtext: #606160; /* Muted text (Lighter gray for readability) */
     --color-Dark_border: #2D3748;  /* Subtle borders (Darker border) */
 
     /* PRIMARY BRAND COLORS (Slightly Desaturated for Comfort) */
-    --color-Dark_primary: #307bdf; /* Secondary Action (Deep Blue - Muted) */
-    --color-Dark_secondary: #30d3df; /* Primary Accent (Aqua - Muted) */
-    --color-Dark_power: #df3b30;    /* Power Accent / CTA (Red-Orange - Muted) */
+    --color-Dark_primary: #30D3DF; /* Secondary Action (Deep Blue - Muted) */
+    --color-Dark_secondary: #307BDF; /* Primary Accent (Aqua - Muted) */
+    --color-Dark_power: #DF3B30;    /* Power Accent / CTA (Red-Orange - Muted) */
 
     --font-space-grotesk: var(--font-space-grotesk);
 }

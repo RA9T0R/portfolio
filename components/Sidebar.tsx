@@ -54,20 +54,22 @@ const Sidebar = () => {
     }
 
     return (
-        <aside className={`font-space-grotesk h-screen flex-shrink-0 transition-all duration-300 ease-in-out 
+        <aside className={`font-space-grotesk flex-shrink-0 transition-all duration-300 ease-in-out 
                 bg-surface dark:bg-Dark_surface hidden md:flex flex-col flex-grow-0  rounded-r-4xl
                 ${sidebarWidth}`}>
 
             {/* Top Section */}
             <div className={`flex p-4 gap-4 items-center ${isCollapsed && 'justify-center'}`}>
-                <div className="flex w-10 h-10 bg-bg dark:bg-Dark_bg rounded-lg items-center justify-center flex-shrink-0 select-none">
-                    {/* Hydration-safe logo render */}
-                    {mounted && (theme === "dark"
-                            ? <Image src="/images/Logo_B.png" alt="Logo" width={30} height={30}/>
-                            : <Image src="/images/Logo_W.png" alt="Logo" width={30} height={30}/>
-                    )}
-                    {!mounted && <div className="w-[30px] h-[30px]" />}
-                </div>
+                <Link href="/">
+                    <div className="flex w-10 h-10 bg-bg dark:bg-Dark_bg rounded-lg items-center justify-center flex-shrink-0 select-none">
+                        {/* Hydration-safe logo render */}
+                        {mounted && (theme === "dark"
+                                ? <Image src="/images/Logo_B.png" alt="Logo" width={30} height={30}/>
+                                : <Image src="/images/Logo_W.png" alt="Logo" width={30} height={30}/>
+                        )}
+                        {!mounted && <div className="w-[30px] h-[30px]" />}
+                    </div>
+                </Link>
 
                 {!isCollapsed && (
                     <div className="flex flex-col overflow-hidden whitespace-nowrap">

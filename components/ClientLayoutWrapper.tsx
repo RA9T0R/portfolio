@@ -13,7 +13,7 @@ export default function ClientLayoutWrapper({children,}: { children: React.React
 
             <Navbar onMenuClick={() => setIsMobileMenuOpen(true)}/>
 
-            <div className="flex-1 p-4">
+            <div className="flex-1 px-4">
                 {children}
             </div>
         </>
