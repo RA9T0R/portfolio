@@ -1,15 +1,11 @@
 import React from "react";
-import Navbar from "@/components/Navbar";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+// This file remains a Server Component (no "use client")
+export default function AppPagesLayout({children,}: { children: React.ReactNode; }) {
     return (
-        <>
-            <Navbar />
-            <div className="flex-1 p-4">
-                {children}
-            </div>
-        </>
+        <ClientLayoutWrapper>
+            {children}
+        </ClientLayoutWrapper>
     );
-};
-
-export default Layout;
+}

@@ -1,25 +1,26 @@
-"use client";
-
+import ThemeToggle from "@/components/theme-toggle";
 import React from "react";
-import { usePathname } from "next/navigation";
+import NavbarHeader from "./NavbarHeader";
+import { Menu } from "lucide-react"; // 1. Import the Menu icon
 
-const Navbar = () => {
-    const pathname = usePathname();
+// 2. Add 'onMenuClick' to the props
+interface NavbarProps {
+    onMenuClick: () => void;
+}
 
-    let headerText = "Portfolio"; // Default text
-
-    if (pathname === "/") {
-        headerText = "Dashboard";
-    } else if (pathname === "/Projects") {
-        headerText = "My Projects";
-    } else if (pathname === "/contact") {
-        headerText = "Contact Me";
-    }
-
+const Navbar = ({ onMenuClick }: NavbarProps) => {
     return (
-        <nav className="w-full p-4 border-b border-white/10 bg-BG ">
-            <h1 className="text-xl font-bold text-Text ">{headerText}</h1>
+        <nav className="w-full p-4 flex justify-between items-center gap-4">
 
+            <button onClick={onMenuClick} className="p-2 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 md:hidden cursor-pointer ">
+                <Menu size={24} />
+            </button>
+
+            <div className="flex-1">
+                <NavbarHeader />
+            </div>
+
+            <ThemeToggle/>
         </nav>
     );
 };
