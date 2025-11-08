@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
+import {ThemeProvider} from "next-themes";
 
 const SpaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -24,16 +25,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${SpaceGrotesk.variable} ${geistMono.variable} min-h-screen antialiased`}
       >
-        <div className="flex min-h-screen">
-          <Sidebar/>
-          <main className="flex-1 p-4 overflow-auto transition-all duration-300">
-              {children}
-          </main>
-        </div>
+        <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+          <div className="flex min-h-screen bg-bg dark:bg-Dark_bg">
+            <Sidebar/>
+              <main className="flex-1 md:px-3 lg:px-6 xl:px-12 overflow-auto transition-all duration-300 text-text dark:text-Dark_text">
+                {children}
+              </main>
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
