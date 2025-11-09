@@ -1,49 +1,65 @@
-import React from 'react';
-import { Phone, Mail, MapPin, type LucideProps } from 'lucide-react'; // 1. Import LucideProps
+"use client"; // 1. Make this a Client Component
 
+import React, { useState } from 'react';
+import { Phone, Mail, MapPin, type LucideProps, Loader2, CheckCircle, AlertTriangle } from 'lucide-react';
+import emailjs from 'emailjs-com';
+
+// --- 2. UPDATE HELPER PROPS to be controlled components ---
 interface InputFieldProps {
     label: string;
-    type?: string; // Optional prop
+    type?: string;
     placeholder: string;
+    name: string; // Add name
+    value: string; // Add value
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Add onChange
 }
 
-const InputField = ({ label, type = 'text', placeholder }: InputFieldProps) => (
+const InputField = ({ label, type = 'text', placeholder, name, value, onChange }: InputFieldProps) => (
     <div className="flex flex-col gap-2">
         <label htmlFor={label} className="text-sm font-medium text-subtext dark:text-Dark_subtext">{label}</label>
         <input
             type={type}
             id={label}
             placeholder={placeholder}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required // Add required for validation
             className="bg-bg dark:bg-Dark_bg border border-subtext/20 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
         />
     </div>
 );
 
-// 3. Define types for TextareaField
 interface TextareaFieldProps {
     label: string;
     placeholder: string;
-    rows?: number; // Optional prop
+    rows?: number;
+    name: string; // Add name
+    value: string; // Add value
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void; // Add onChange
 }
 
-const TextareaField = ({ label, placeholder, rows = 5 }: TextareaFieldProps) => (
+const TextareaField = ({ label, placeholder, rows = 5, name, value, onChange }: TextareaFieldProps) => (
     <div className="flex flex-col gap-2">
         <label htmlFor={label} className="text-sm font-medium text-subtext dark:text-Dark_subtext">{label}</label>
         <textarea
             id={label}
             placeholder={placeholder}
             rows={rows}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required // Add required for validation
             className="bg-bg dark:bg-Dark_bg border border-subtext/20 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
         />
     </div>
 );
 
-// 4. Define types for ContactInfoItem
+// --- ContactInfoItem (No change needed) ---
 interface ContactInfoItemProps {
-    icon: React.ComponentType<LucideProps>; // Type for a Lucide icon component
+    icon: React.ComponentType<LucideProps>;
     text: string;
 }
-
 const ContactInfoItem = ({ icon: Icon, text }: ContactInfoItemProps) => (
     <div className="flex items-center gap-4 py-4">
         <Icon size={20} className="text-primary flex-shrink-0" />
@@ -53,40 +69,117 @@ const ContactInfoItem = ({ icon: Icon, text }: ContactInfoItemProps) => (
 
 
 // --- Contact Page Component ---
-
 const Contact = () => {
+    // 3. Add state for form data
+    const [formData, setFormData] = useState({
+        from_name: '',
+        from_email: '',
+        subject: '',
+        message: '',
+    });
+
+    // 4. Add state for form submission status
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formStatus, setFormStatus] = useState<{ type: 'success' | 'error' | '', message: string }>({ type: '', message: '' });
+
+    // 5. Handle input changes
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    // 6. Handle form submission
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setFormStatus({ type: '', message: '' });
+
+        // --- ⚠️ PASTE YOUR EMAILJS KEYS HERE ---
+        const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICEID || "";
+        const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATEID || "";
+        const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLICKEY || "";
+        // -------------------------------------
+
+        try {
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY);
+
+            setFormStatus({ type: 'success', message: 'Message sent successfully! I will get back to you soon.' });
+            setFormData({ from_name: '', from_email: '', subject: '', message: '' }); // Clear form
+        } catch (error) {
+            console.error('EmailJS error:', error);
+            setFormStatus({ type: 'error', message: 'Failed to send message. Please try again later.' });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="w-full h-full flex flex-col gap-6 py-3">
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">You can connect me with this form OR copy my address.</p>
 
-            {/* MAIN CONTENT GRID */}
             <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
-
                 {/* 1. LEFT COLUMN: "Get In Touch" Form (70%) */}
                 <div className="lg:col-span-7">
                     <div className="bg-surface dark:bg-Dark_surface p-6 sm:p-8 rounded-2xl border border-subtext/20">
                         <h3 className="font-bold text-2xl mb-6">Get In Touch</h3>
 
-                        <form className="flex flex-col gap-6">
-                            {/* Name & Email Row */}
+                        {/* 7. Update form and inputs */}
+                        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <InputField label="Your Name" placeholder="Enter your name" />
-                                <InputField label="Your Email" type="email" placeholder="Enter your email" />
+                                <InputField
+                                    label="Your Name"
+                                    placeholder="Enter your name"
+                                    name="from_name"
+                                    value={formData.from_name}
+                                    onChange={handleChange}
+                                />
+                                <InputField
+                                    label="Your Email"
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    name="from_email"
+                                    value={formData.from_email}
+                                    onChange={handleChange}
+                                />
                             </div>
 
-                            {/* Subject Row */}
-                            <InputField label="Your Subject" placeholder="Enter the subject" />
+                            <InputField
+                                label="Your Subject"
+                                placeholder="Enter the subject"
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                            />
 
-                            {/* Message Row */}
-                            <TextareaField label="Message" placeholder="Enter your message" />
+                            <TextareaField
+                                label="Message"
+                                placeholder="Enter your message"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                            />
 
-                            {/* Button */}
+                            {/* 8. Update button with loading state */}
                             <button
                                 type="submit"
-                                className="bg-primary hover:bg-primary/90 transition-colors text-white font-bold py-3 px-8 rounded-xl uppercase tracking-wider w-full sm:w-auto"
+                                disabled={isSubmitting}
+                                className="bg-primary hover:bg-primary/90 transition-colors text-white font-bold py-3 px-8 rounded-xl uppercase tracking-wider w-full sm:w-auto flex items-center justify-center disabled:opacity-50"
                             >
-                                Send Message
+                                {isSubmitting ? (
+                                    <Loader2 className="animate-spin" />
+                                ) : (
+                                    'Send Message'
+                                )}
                             </button>
+
+                            {/* 9. Add success/error message */}
+                            {formStatus.message && (
+                                <div className={`flex items-center gap-2 p-3 rounded-lg ${
+                                    formStatus.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'
+                                }`}>
+                                    {formStatus.type === 'success' ? <CheckCircle size={20} /> : <AlertTriangle size={20} />}
+                                    <span className="text-sm">{formStatus.message}</span>
+                                </div>
+                            )}
                         </form>
                     </div>
                 </div>
