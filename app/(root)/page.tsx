@@ -2,10 +2,11 @@ import React from 'react'
 import {FolderGit2, Newspaper, CodeXml, Briefcase, type LucideProps, Loader, CheckCircle, Clock} from 'lucide-react'
 import Image from "next/image";
 import Link from 'next/link';
-import { projects_data, type Project } from '@/lib/constants';
+import {type Project } from '@/lib/constants';
 import {blog_posts,type BlogPost} from '@/lib/constants';
-import { LANGUAGES, FRAMEWORKS, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
+import { LANGUAGES, WEBSITE, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
 import TechList from "@/components/TechList";
+import {supabase} from "@/lib/supabaseClient";
 
 // 2. Define types for StatCard props
 interface StatCardProps {
@@ -99,14 +100,29 @@ const RecentBlog = ({slug,title, excerpt, date}: {slug:string,title:string,excer
     );
 }
 
+async function getProjects() {
+    // Select all projects, ordered by creation date
+    const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.error("Error fetching projects:", error);
+        return [];
+    }
+    // Cast the data to your Project type array
+    return data as Project[];
+}
 // --- Your Homepage Component ---
-const Homepage = () => {
+const Homepage = async () => {
+    const projects_data = await getProjects()
     const recentProjects = projects_data.slice(0, 3);
     const recentBlogs = blog_posts.slice(0, );
 
     const total_projects = projects_data.length
     const total_blogs = blog_posts.length
-    const technologies = LANGUAGES.length + FRAMEWORKS.length + DEV_TOOLS.length + LIBRARIES.length;
+    const technologies = LANGUAGES.length + WEBSITE.length + DEV_TOOLS.length + LIBRARIES.length;
     const experience = 0
 
     return (
@@ -191,7 +207,7 @@ const Homepage = () => {
 
                             <div className="flex flex-col gap-3">
                                 <h1 className="font-semibold text-lg text-subtext dark:text-Dark_subtext">Frameworks </h1>
-                                <TechList technologies={FRAMEWORKS} showName={false} />
+                                <TechList technologies={WEBSITE} showName={false} />
                             </div>
                         </div>
 

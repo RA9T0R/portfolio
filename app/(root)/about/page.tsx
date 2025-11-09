@@ -4,7 +4,7 @@ import {Mail, Phone, MapPin, GraduationCap, SquareArrowOutUpRight} from 'lucide-
 import Link from 'next/link';
 import {FacebookIcon, GitHubIcon, GmailIcon} from "@/components/Icon";
 import TechList from "@/components/TechList";
-import { LANGUAGES, FRAMEWORKS, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
+import { LANGUAGES, WEBSITE, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
 
 
 // --- About Page Component ---
@@ -106,7 +106,7 @@ const About = () => {
                             <div className="flex flex-col gap-2">
                                 <h4 className="font-semibold text-lg text-subtext dark:text-Dark_subtext">Frameworks</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    <TechList technologies={FRAMEWORKS} />
+                                    <TechList technologies={WEBSITE} />
                                 </div>
                             </div>
 

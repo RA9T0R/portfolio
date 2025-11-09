@@ -74,6 +74,8 @@ export type ProjectImage = {
 
 // --- 2. Define the Type for a Project ---
 export type Project = {
+    id: number;           // 🌟 ADD THIS (matches the 'bigint' primary key)
+    created_at: string;   // 🌟 ADD THIS (matches the 'timestamp')
     slug: string; // For the URL, e.g., "quickbites"
     title: string;
     short_description: string; // Brief description for the project card
@@ -93,6 +95,8 @@ export type Project = {
 // --- 3. Create the Array of Projects ---
 export const projects_data: Project[] = [
     {
+        id:1,
+        created_at:"1/2/3",
         slug: "quickbites",
         title: "QuickBites",
         short_description: "Built a full-stack real-time food ordering system. Include QR-base ordering, Dual interfaces for customers and admins.",
@@ -126,6 +130,8 @@ export const projects_data: Project[] = [
         technologies: ["React", "Node.js", "MongoDB", "Socket.io", "TailwindCSS"]
     },
     {
+        id:2,
+        created_at:"1/2/3",
         slug: "footprint-ecommerce",
         title: "Footprint",
         short_description: "An e-commerce platform deployment successful with modern features.",
@@ -155,6 +161,8 @@ export const projects_data: Project[] = [
         technologies: ["Next.js", "TypeScript", "TailwindCSS", "Supabase"]
     },
     {
+        id:3,
+        created_at:"1/2/3",
         slug: "ai-ml-dashboard",
         title: "AI/ML Model",
         short_description: "A data analytics dashboard for visualizing complex data sets and machine learning model performance.",
@@ -183,6 +191,8 @@ export const projects_data: Project[] = [
         technologies: ["Python", "TensorFlow", "Flask", "React", "Chart.js"]
     },
     {
+        id:4,
+        created_at:"1/2/3",
         slug: "2",
         title: "AI/ML Model",
         short_description: "A data analytics dashboard for visualizing complex data sets and machine learning model performance.",
@@ -295,29 +305,42 @@ export const LANGUAGES: string[] = [
     "Python",
     "JavaScript",
     "TypeScript",
-    "C++"
+    "C++",
+    "Java",
+
     // Add more languages
 ];
 
-export const FRAMEWORKS: string[] = [
+export const WEBSITE: string[] = [
+    "HTML5",
+    "CSS",
     "React",
     "Next.js",
     "TailwindCSS",
     "Express.js",
-    "Flask"
+    "Node.js",
+    "FastAPI",
+    "Vite",
     // Add more frameworks
 ];
 
 export const DEV_TOOLS: string[] = [
+    "Git",
     "Vercel",
-    "Supabase"
+    "WebStorm",
+    "VS Code",
+    "Postman",
+    "Supabase",
+    "MongoDB",
+    "Postgresql"
     // Add "WebStorm", "VS Code", "Figma", etc.
 ];
 
 export const LIBRARIES: string[] = [
     "TensorFlow",
+    "Pandas",
+    "Numpy",
     "Chart.js",
     "Socket.io",
-    "MongoDB" // MongoDB is a DB, but it fits in this tech list
     // Add "Mongoose", "Prisma", etc.
 ];

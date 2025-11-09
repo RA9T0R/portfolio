@@ -31,6 +31,12 @@ const NavbarHeader = () => {
     } else if (pathname === "/contact") {
         headerText = "Contact";
         subtext = "contact";
+    } else if (pathname === "/login") {
+        headerText = "Admin";
+        subtext = "adminlogin";
+    }else if (pathname === "/dashboard") {
+        headerText = "Dashboard";
+        subtext = "admindashboard";
     }
 
     return (
