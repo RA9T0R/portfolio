@@ -3,15 +3,9 @@ import Image from 'next/image';
 import {Mail, Phone, MapPin, GraduationCap, SquareArrowOutUpRight} from 'lucide-react'; // Example icons
 import Link from 'next/link';
 import {FacebookIcon, GitHubIcon, GmailIcon} from "@/components/Icon";
+import TechList from "@/components/TechList";
+import { LANGUAGES, FRAMEWORKS, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
 
-// --- Helper Components ---
-
-// Component for a skill badge
-const SkillBadge = ({ name }:{name:string}) => (
-    <span className="bg-bg text-text dark:bg-Dark_bg dark:text-Dark_text font-medium px-3 py-1 rounded-full text-sm">
-        {name}
-    </span>
-);
 
 // --- About Page Component ---
 
@@ -104,10 +98,7 @@ const About = () => {
                             <div className="flex flex-col gap-2">
                                 <h4 className="font-semibold text-lg text-subtext dark:text-Dark_subtext">Languages</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    <SkillBadge name="Python" />
-                                    <SkillBadge name="JavaScript" />
-                                    <SkillBadge name="TypeScript" />
-                                    <SkillBadge name="C++" />
+                                    <TechList technologies={LANGUAGES} />
                                 </div>
                             </div>
 
@@ -115,9 +106,7 @@ const About = () => {
                             <div className="flex flex-col gap-2">
                                 <h4 className="font-semibold text-lg text-subtext dark:text-Dark_subtext">Frameworks</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    <SkillBadge name="React.js" />
-                                    <SkillBadge name="Next.js" />
-                                    <SkillBadge name="Tailwind CSS" />
+                                    <TechList technologies={FRAMEWORKS} />
                                 </div>
                             </div>
 
@@ -125,9 +114,7 @@ const About = () => {
                             <div className="flex flex-col gap-2">
                                 <h4 className="font-semibold text-lg text-subtext dark:text-Dark_subtext">Developer Tools</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    <SkillBadge name="WebStorm" />
-                                    <SkillBadge name="VS Code" />
-                                    <SkillBadge name="Figma" />
+                                    <TechList technologies={DEV_TOOLS} />
                                 </div>
                             </div>
 
@@ -135,9 +122,7 @@ const About = () => {
                             <div className="flex flex-col gap-2">
                                 <h4 className="font-semibold text-lg text-subtext dark:text-Dark_subtext">Libraries</h4>
                                 <div className="flex flex-wrap gap-2">
-                                    <SkillBadge name="Tensorflow" />
-                                    <SkillBadge name="Mongoose" />
-                                    <SkillBadge name="Prisma" />
+                                    <TechList technologies={LIBRARIES} />
                                 </div>
                             </div>
                         </div>

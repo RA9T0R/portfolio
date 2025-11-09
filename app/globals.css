@@ -39,3 +39,72 @@
 
     --font-space-grotesk: var(--font-space-grotesk);
 }
+@layer components {
+    /* * This is the main wrapper for your blog post content.
+     * You will add `class="blog-content"` to the div that wraps your HTML.
+     */
+    .blog-content {
+        @apply w-full text-lg; /* Base font size */
+
+        /* --- Headings --- */
+        /* This replaces your .Topic_blog */
+        h2 {
+            @apply text-4xl font-bold mb-4 text-text dark:text-Dark_text max-sm:text-3xl;
+            /* Adds a nice underline matching your theme */
+            @apply border-b-2 border-subtext dark:border-Dark_subtext pb-2;
+        }
+
+        h3 {
+            @apply text-2xl font-semibold mt-8 mb-3 text-text dark:text-Dark_text max-sm:text-xl;
+        }
+
+        /* --- Body Text --- */
+        p {
+            @apply leading-relaxed mb-6 text-text/90 dark:text-Dark_text/90;
+            /* Using text-opacity 90 makes it easier to read */
+        }
+
+        /* --- Lists --- */
+        ul, ol {
+            @apply list-inside mb-6 pl-4 space-y-3;
+        }
+        ul { @apply list-disc; }
+        ol { @apply list-decimal; }
+
+        li {
+            @apply leading-relaxed text-text/90 dark:text-Dark_text/90;
+        }
+
+        /* Style the bullets/numbers */
+        li::marker {
+            @apply text-primary dark:text-Dark_primary font-semibold;
+        }
+
+        /* --- Links --- */
+        a {
+            @apply text-primary dark:text-Dark_primary font-medium underline decoration-primary/50 underline-offset-4;
+            @apply transition-colors hover:text-secondary dark:hover:text-Dark_secondary;
+        }
+
+        /* --- Blockquotes --- */
+        blockquote {
+            @apply border-l-4 border-primary dark:border-Dark_primary pl-4 italic my-6 py-2;
+            @apply bg-surface dark:bg-Dark_surface rounded-r-lg;
+        }
+
+        /* --- Code --- */
+        /* Inline code */
+        code {
+            @apply bg-power/10 text-power dark:bg-Dark_power/20 dark:text-Dark_power px-1.5 py-0.5 rounded-md font-mono text-sm;
+        }
+
+        /* Code blocks */
+        pre {
+            @apply bg-Dark_surface p-4 rounded-xl overflow-x-auto my-6 border border-Dark_subtext;
+        }
+
+        pre code {
+            @apply bg-transparent text-white p-0;
+        }
+    }
+}
