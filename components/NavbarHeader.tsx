@@ -8,7 +8,12 @@ const NavbarHeader = () => {
     let headerText = "Portfolio";
     let subtext = "Page";
 
-    if (pathname === "/") {
+    if (pathname.startsWith('/projects/') && pathname.length > '/projects/'.length) {
+        headerText = "Projects Details";
+        subtext = pathname.substring(1);
+    }
+
+    else if (pathname === "/") {
         headerText = "Portfolio Overview";
         subtext = "Overview";
     } else if (pathname === "/projects") {
@@ -27,6 +32,7 @@ const NavbarHeader = () => {
         headerText = "Contact";
         subtext = "contact";
     }
+
     return (
         <div className="flex flex-col">
             <h1 className="text-xl md:text-4xl font-bold">{headerText}</h1>
