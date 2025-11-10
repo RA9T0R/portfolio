@@ -11,9 +11,9 @@ import {
     SiTailwindcss,
     SiNextdotjs,
     SiTypescript,
-    SiVercel,
-    SiSocketdotio,
-    SiExpress,
+    SiVercel,SiBlender,
+    SiSocketdotio,SiUnrealengine,
+    SiExpress,SiStreamlit,
     SiFlask,SiPandas,SiNumpy,
     SiTensorflow,SiVite,
     SiChartdotjs,SiCplusplus,SiFastapi,
@@ -35,6 +35,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
     "JavaScript":<IoLogoJavascript className="text-yellow-400 size-6 lg:size-4 xl:size-6"/>,
     "Express.js": <SiExpress className="size-6 lg:size-4 xl:size-6"/>,
     "Python": <FaPython className="text-yellow-400 size-6 lg:size-4 xl:size-6" />,
+    "Streamlit": <SiStreamlit className="text-red-400 size-6 lg:size-4 xl:size-6" />,
     "C++": <SiCplusplus  className="text-blue-400 size-6 lg:size-4 xl:size-6" />,
     "Flask": <SiFlask className="size-6 lg:size-4 xl:size-6"/>,
     "FastAPI": <SiFastapi className="text-teal-600 size-6 lg:size-4 xl:size-6"/>,
@@ -51,6 +52,8 @@ const iconMap: { [key: string]: React.ReactNode } = {
     "Postman": <SiPostman className="text-orange-500 size-6 lg:size-4 xl:size-6" />,
     "Vercel": <SiVercel className="size-6 lg:size-4 xl:size-6"/>,
     "Java": <FaJava className="size-6 lg:size-4 xl:size-6"/>,
+    "Unreal_engine": <SiUnrealengine  className="size-6 lg:size-4 xl:size-6"/>,
+    "Blender": <SiBlender  className="text-orange-400 size-6 lg:size-4 xl:size-6"/>,
 };
 
 const DefaultIcon = ({ name }: { name: string }) => (

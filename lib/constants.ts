@@ -329,6 +329,7 @@ export const WEBSITE: string[] = [
     "Express.js",
     "Node.js",
     "FastAPI",
+    "Streamlit",
     "Vite",
     // Add more frameworks
 ];

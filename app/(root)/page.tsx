@@ -125,7 +125,7 @@ async function getBlogPosts() {
         console.error("Error fetching blog posts:", error);
         return [];
     }
-    return data as BlogPost[];
+    return data?.reverse() as BlogPost[];
 }
 
 const formatDate = (dateString: string) => {
