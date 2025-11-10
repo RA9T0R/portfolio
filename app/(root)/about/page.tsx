@@ -80,7 +80,7 @@ const About = () => {
                                 <span className="text-xs text-subtext dark:text-Dark_subtext font-light hidden lg:block">2016 - 2022</span>
                             </div>
                             <span className="text-xs text-subtext dark:text-Dark_subtext font-light block lg:hidden">2016 - 2022</span>
-                            <p className="text-sm text-subtext dark:text-Dark_subtext">Science-Math EP</p>
+                            <p className="text-sm text-subtext dark:text-Dark_subtext">Science-Math IEP</p>
                         </div>
                     </div>
 
