@@ -140,7 +140,7 @@ const Sidebar = () => {
             </div>
 
             {/* Log Out Button */}
-            <div className={`cursor-pointer flex items-center gap-4 m-3 font-light mt-auto rounded-xl hover:bg-black/10 dark:hover:bg-white/10 transition-colors ${isCollapsed ? 'justify-center' : ''}`}>
+            <Link href="/login" className={`cursor-pointer flex items-center gap-4 m-3 font-light mt-auto rounded-xl hover:bg-black/10 dark:hover:bg-white/10 transition-colors ${isCollapsed ? 'justify-center' : ''}`}>
                 <div className="p-3">
                     <LogIn size={24} strokeWidth={1.5} />
                 </div>
@@ -149,7 +149,7 @@ const Sidebar = () => {
                         Phongphat LOGIN
                     </div>
                 )}
-            </div>
+            </Link>
         </aside>
     );
 };

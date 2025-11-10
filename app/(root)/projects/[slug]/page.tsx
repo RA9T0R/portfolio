@@ -1,23 +1,38 @@
-// FILE: app/(root)/projects/[slug]/page.tsx
-// NO "use client" - This is a Server Component
-
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import {ExternalLink, Dot, ArrowLeftToLine} from 'lucide-react';
+import { Github, ExternalLink, Dot } from 'lucide-react';
 
-// Import the data and types
-import { projects_data, type Project } from '@/lib/constants';
+// Database and Types
+import { supabase } from '@/lib/supabaseClient';
+import { type Project } from '@/lib/constants'; // 1. FIX: Import type from lib/types
 
-// 1. Import your new Client Component
-import ProjectImageSlider from '@/components/ProjectImageSlider';
-import {GitHubIcon} from "@/components/Icon";
-import {StatusBadge} from "@/components/ProjectCard";
+// Components
+import ImageSlider from '@/components/ImageSlider';
+import { StatusBadge } from "@/components/ProjectCard";
 
-// Define the props interface
+
+// 2. FIX: Change the props interface to use a Promise
 interface ProjectDetailPageProps {
-    params: Promise<{ slug: string }>; // Keeping your async/await fix
+    params: Promise<{ slug: string }>;
+}
+
+// Define the async data fetching function
+async function getProject(slug: string) {
+    // This function is now safe because 'slug' will be a valid string
+    const normalizedSlug = slug.toLowerCase();
+
+    const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('slug', normalizedSlug)
+        .single();
+
+    if (error) {
+        console.error("Error fetching project:", error);
+    }
+    return data as Project | null;
 }
 
 // Helper: A simple component for a list item
@@ -31,8 +46,10 @@ const DetailListItem = ({ children }: { children: React.ReactNode }) => (
 // --- Project Details Page Component (async Server Component) ---
 const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
 
+    // 3. FIX: Await the params to get the slug
     const { slug } = await params;
-    const project = projects_data.find(p => p.slug === slug);
+
+    const project = await getProject(slug);
 
     if (!project) {
         notFound();
@@ -40,21 +57,20 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
 
     return (
         <div className="w-full h-full flex flex-col gap-4 py-6 font-space-grotesk">
-
-            <div className="font-extrabold text-6xl flex gap-5 items-center">
-                {project.title}
-            </div>
-
+            <h1 className="font-extrabold text-6xl">{project.title}</h1>
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">
                 {project.short_description}
             </p>
 
-            {/* Main Content Grid */}
+            {/* Main Content Grid (70/30) */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                <div className="lg:col-span-7 flex flex-col gap-6">
-                    <ProjectImageSlider images={project.images} />
 
-                    <div className="flex flex-row justify-between">
+                {/* Left Column: Image Slider (70%) */}
+                <div className="lg:col-span-7 flex flex-col gap-6">
+                    <ImageSlider images={project.images} />
+
+                    <div className="flex flex-row justify-between items-center flex-wrap">
+                        {/* GitHub & Live Demo */}
                         <div className="flex flex-wrap lg:gap-4 items-center">
                             <a
                                 href={project.github_url}
@@ -62,7 +78,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-subtext transition-colors hover:bg-surface hover:dark:bg-Dark_surface p-2 rounded-lg"
                             >
-                                <GitHubIcon width={20} height={20} className="text-gray-700 dark:text-white"/>
+                                <Github size={20} />
                                 GitHub
                             </a>
                             {project.live_demo_url && (
@@ -83,12 +99,16 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
 
                 {/* Right Column: Details (30%) (All Server-Side) */}
                 <div className="lg:col-span-5 flex flex-col gap-8 lg:sticky lg:top-24 h-fit">
+
+                    {/* Overview */}
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20">
                         <h3 className="font-bold text-2xl mb-4">Overview</h3>
                         <p className="text-subtext dark:text-Dark_subtext text-base">
                             {project.overview}
                         </p>
                     </div>
+
+                    {/* Tech Stack */}
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20">
                         <h3 className="font-bold text-2xl mb-4">Tech Stack</h3>
                         <ul className="list-none space-y-2">
@@ -97,6 +117,8 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
                             ))}
                         </ul>
                     </div>
+
+                    {/* Features */}
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20">
                         <h3 className="font-bold text-2xl mb-4">Features</h3>
                         <ul className="list-none space-y-2">

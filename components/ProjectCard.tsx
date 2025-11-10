@@ -43,7 +43,7 @@ export const StatusBadge = ({ status }: { status: Props['status'] }) => {
 // --- Project Card Component (Fixed) ---
 const ProjectCard = ({slug, title, short_description, images, github_url, live_demo_url, status, technologies}: Props) => {
 
-    const coverImage = "/images/placeholder.png"; //images[0]?.src ||
+    const coverImage = images[0]?.src
 
     return (
         <div className="flex flex-col bg-surface dark:bg-Dark_surface rounded-2xl
