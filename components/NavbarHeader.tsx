@@ -11,9 +11,10 @@ const NavbarHeader = () => {
     if (pathname.startsWith('/projects/') && pathname.length > '/projects/'.length) {
         headerText = "Projects Details";
         subtext = pathname.substring(1);
-    }
-
-    else if (pathname === "/") {
+    } else if (pathname.startsWith('/blogs/') && pathname.length > '/blogs/'.length) {
+        headerText = "Blog Details";
+        subtext = pathname.substring(1);
+    }else if (pathname === "/") {
         headerText = "Portfolio Overview";
         subtext = "Overview";
     } else if (pathname === "/projects") {

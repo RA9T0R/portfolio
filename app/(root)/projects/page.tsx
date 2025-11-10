@@ -1,7 +1,7 @@
 import React from 'react'
 import ProjectCard from "@/components/ProjectCard";
 import { supabase } from '@/lib/supabaseClient'; // Import supabase
-import { type Project } from '@/lib/constants'; // Import the type
+import { type Project } from '@/lib/constants';
 
 // Define the async data fetching function
 async function getProjects() {

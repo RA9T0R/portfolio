@@ -1,53 +1,74 @@
-// FILE: app/(root)/blogs/[slug]/page.tsx
 import React from 'react';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { supabase } from '@/lib/supabaseClient';
+import { type BlogPost } from '@/lib/constants'; // 1. FIX: Import type from lib/types
+import { CalendarDays, ArrowLeft } from 'lucide-react';
+import ImageSlider from '@/components/ImageSlider'; // We can reuse this!
 
-// Import the data and types
-import { blog_posts, type BlogPost } from '@/lib/constants';
-import {CalendarDays} from 'lucide-react';
-import ProjectImageSlider from "@/components/ProjectImageSlider";
-
-// Define the props interface (using the async/await fix)
 interface BlogPostPageProps {
     params: Promise<{ slug: string }>;
 }
 
+// Define the async data fetching function
+async function getPost(slug: string) {
+    const normalizedSlug = slug.toLowerCase();
+    const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .eq('slug', normalizedSlug)
+        .single();
+
+    if (error) {
+        console.error("Error fetching post:", error);
+    }
+    return data as BlogPost | null;
+}
+
+// Helper function to format the date
+const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+};
+
 const BlogPostDetailPage = async ({ params }: BlogPostPageProps) => {
     const { slug } = await params;
-    const post = blog_posts.find(p => p.slug === slug);
+    const post = await getPost(slug);
+
     if (!post) {
         notFound();
     }
 
     return (
         <div className="w-full h-full flex flex-col gap-4 py-6 font-space-grotesk">
-            {/* Header elements... */}
-            <h1 className="font-extrabold text-6xl flex gap-5 items-center">{post.title}</h1>
+            <h1 className="font-extrabold text-6xl">{post.title}</h1>
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">{post.excerpt}</p>
+
             <div className="flex gap-2 items-center text-subtext dark:text-Dark_subtext">
-                <CalendarDays strokeWidth={1} />
-                {post.date}
+                <CalendarDays strokeWidth={1} size={16} />
+                <span>{formatDate(post.date)}</span>
+                <span className="mx-1">|</span>
+                <span>{post.author}</span>
             </div>
 
-            {/* Main Content Grid (70/30) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-
-                {/* 🌟 LEFT COLUMN: POST CONTENT (5/12 width) 🌟 */}
-                <div className="lg:col-span-5 flex flex-col gap-8">
-
-                    {/* Content Card (Added Card styling and padding here) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-6">
+                <div className="lg:col-span-5 flex flex-col">
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20 h-full">
-                        <div className="prose dark:prose-invert max-w-none text-Text dark:text-Dark_text">
-                            <div className="blog-content"
-                                dangerouslySetInnerHTML={{ __html: post.content }}
-                            />
-                        </div>
+                        <div
+                            className="blog-content"
+                            dangerouslySetInnerHTML={{ __html: post.content }}
+                        />
                     </div>
                 </div>
 
-                {/* RIGHT COLUMN: SLIDER AND TAGS (7/12 width) */}
-                <div className="lg:col-span-7 lg:sticky lg:top-24 h-fit flex flex-col gap-8">
-                    <ProjectImageSlider images={post.images} />
+                <div className="lg:col-span-7 flex flex-col gap-8">
+                    {post.images && post.images.length > 0 && (
+                        <ImageSlider images={post.images} />
+                    )}
+
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20">
                         <h3 className="font-bold text-xl mb-4">Tags</h3>
                         <div className="flex flex-wrap gap-2">

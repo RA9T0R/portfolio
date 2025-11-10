@@ -1,4 +1,4 @@
-// FILE: app/components/ProjectImageSlider.tsx
+// FILE: app/components/ImageSlider.tsx
 "use client";
 
 import React, { useState, useEffect, useCallback } from 'react';
@@ -11,7 +11,7 @@ interface ProjectImageSliderProps {
     images: ProjectImage[];
 }
 
-const ProjectImageSlider = ({ images }: ProjectImageSliderProps) => {
+const ImageSlider = ({ images }: ProjectImageSliderProps) => {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
     const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
     const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
@@ -99,4 +99,4 @@ const ProjectImageSlider = ({ images }: ProjectImageSliderProps) => {
     );
 };
 
-export default ProjectImageSlider;
+export default ImageSlider;

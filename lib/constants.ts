@@ -92,6 +92,29 @@ export type Project = {
     technologies: string[]; // Array of technology names (for badges/filters)
 };
 
+// --- Type for Blog Post Images ---
+export type BlogPostImage = {
+    src: string; // Path to the image
+    caption?: string; // Description for the image/figure
+};
+
+// --- Type for a Blog Post ---
+export type BlogPost = {
+    id: number;
+    created_at: string;
+    slug: string; // For the URL, e.g., "switching-to-webstorm"
+    title: string;
+    author: string;
+    date: string; // Use ISO format later, but string for now (e.g., "Oct 5th, 2025")
+    excerpt: string; // Short summary for the blog card
+
+    // Detailed content for the blog post page
+    content: string; // The full body content (can be markdown)
+
+    images: BlogPostImage[]; // Array of images for the post
+    tags: string[]; // e.g., ["IDE", "Productivity", "WebDev"]
+};
+
 // --- 3. Create the Array of Projects ---
 export const projects_data: Project[] = [
     {
@@ -224,31 +247,14 @@ export const projects_data: Project[] = [
 // ==================================================================================
 // FILE: lib/constants.ts (Add these exports)
 
-// --- Type for Blog Post Images ---
-export type BlogPostImage = {
-    src: string; // Path to the image
-    caption?: string; // Description for the image/figure
-};
-
-// --- Type for a Blog Post ---
-export type BlogPost = {
-    slug: string; // For the URL, e.g., "switching-to-webstorm"
-    title: string;
-    date: string; // Use ISO format later, but string for now (e.g., "Oct 5th, 2025")
-    excerpt: string; // Short summary for the blog card
-
-    // Detailed content for the blog post page
-    content: string; // The full body content (can be markdown)
-
-    images: BlogPostImage[]; // Array of images for the post
-    tags: string[]; // e.g., ["IDE", "Productivity", "WebDev"]
-};
-
 // --- Array of Blog Posts ---
 export const blog_posts: BlogPost[] = [
     {
+        id:1,
+        created_at:"1/2/3",
         slug: "webstorm-as-my-main-ide",
         title: "🎉 WebStrom as my main IDE!",
+        author:"Phongphat Bangkha",
         date: "5th October 2025",
         excerpt: "This blog will explain why I switch from VSCode to WebStorm and how it improved my coding workflow and project navigation.",
         // FIXED content (in constants.ts)
@@ -275,8 +281,11 @@ export const blog_posts: BlogPost[] = [
         tags: ["IDE", "WebDev", "Productivity"],
     },
     {
+        id:2,
+        created_at:"1/2/3",
         slug: "welcome-to-the-new-site",
         title: "Welcome to the new site!",
+        author:"Phongphat Bangkha",
         date: "5th October 2025",
         excerpt: "This first blog post contains my thoughts, process, and intentions of the new website redesign, outlining the goals for better performance and usability.",
         content: "...", // Add detailed content

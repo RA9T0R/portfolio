@@ -3,7 +3,7 @@ import {FolderGit2, Newspaper, CodeXml, Briefcase, type LucideProps, Loader, Che
 import Image from "next/image";
 import Link from 'next/link';
 import {type Project } from '@/lib/constants';
-import {blog_posts,type BlogPost} from '@/lib/constants';
+import {type BlogPost} from '@/lib/constants';
 import { LANGUAGES, WEBSITE, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
 import TechList from "@/components/TechList";
 import {supabase} from "@/lib/supabaseClient";
@@ -83,7 +83,7 @@ const RecentsProject = ({slug,title, status, technologies}: {slug:string,title:s
 }
 const RecentBlog = ({slug,title, excerpt, date}: {slug:string,title:string,excerpt:string,date:string}) => {
     return (
-        <Link href={`/blogs/${slug}`} className="flex flex-col p-3 rounded-lg hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
+        <Link href={`/blogs/${slug}`} className="flex flex-col p-3 rounded-lg bg-bg dark:bg-Dark_bg hover:scale-105 transition-transform">
             {/* Blog Post Title */}
             <h4 className="font-semibold mb-1 truncate">{title}</h4>
 
@@ -94,7 +94,7 @@ const RecentBlog = ({slug,title, excerpt, date}: {slug:string,title:string,excer
 
             {/* Date */}
             <span className="text-xs text-subtext dark:text-Dark_subtext font-light">
-                {date}
+                {formatDate(date)}
             </span>
         </Link>
     );
@@ -114,14 +114,37 @@ async function getProjects() {
     // Cast the data to your Project type array
     return data as Project[];
 }
+
+async function getBlogPosts() {
+    const { data, error } = await supabase
+        .from('blog_posts')
+        .select('*')
+        .order('date', { ascending: false }); // Show newest first
+
+    if (error) {
+        console.error("Error fetching blog posts:", error);
+        return [];
+    }
+    return data as BlogPost[];
+}
+
+const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+};
+
 // --- Your Homepage Component ---
 const Homepage = async () => {
-    const projects_data = await getProjects()
+    const projects_data = await getProjects();
+    const blogs_data = await getBlogPosts();
     const recentProjects = projects_data.slice(0, 3);
-    const recentBlogs = blog_posts.slice(0, );
+    const recentBlogs = blogs_data.slice(0, );
 
     const total_projects = projects_data.length
-    const total_blogs = blog_posts.length
+    const total_blogs = blogs_data.length
     const technologies = LANGUAGES.length + WEBSITE.length + DEV_TOOLS.length + LIBRARIES.length;
     const experience = 0
 

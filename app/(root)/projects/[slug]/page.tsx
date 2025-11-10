@@ -9,7 +9,7 @@ import { supabase } from '@/lib/supabaseClient';
 import { type Project } from '@/lib/constants'; // 1. FIX: Import type from lib/types
 
 // Components
-import ProjectImageSlider from '@/components/ProjectImageSlider';
+import ImageSlider from '@/components/ImageSlider';
 import { StatusBadge } from "@/components/ProjectCard";
 
 
@@ -57,7 +57,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
 
     return (
         <div className="w-full h-full flex flex-col gap-4 py-6 font-space-grotesk">
-            <h1 className="font-extrabold text-5xl">{project.title}</h1>
+            <h1 className="font-extrabold text-6xl">{project.title}</h1>
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">
                 {project.short_description}
             </p>
@@ -67,7 +67,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
 
                 {/* Left Column: Image Slider (70%) */}
                 <div className="lg:col-span-7 flex flex-col gap-6">
-                    <ProjectImageSlider images={project.images} />
+                    <ImageSlider images={project.images} />
 
                     <div className="flex flex-row justify-between items-center flex-wrap">
                         {/* GitHub & Live Demo */}
