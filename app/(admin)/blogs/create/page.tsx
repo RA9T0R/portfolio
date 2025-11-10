@@ -3,9 +3,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { type BlogPost, type BlogPostImage } from '@/lib/constants';
-import ImageUploader from "@/components/ImageUploader"; // Reusing the same uploader
+import ImageUploader from "@/components/ImageUploader";
 import { Loader2 } from 'lucide-react';
 
 // --- Form Data Type ---

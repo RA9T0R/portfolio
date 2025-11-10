@@ -1,16 +1,14 @@
 import React from 'react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
-import { type BlogPost } from '@/lib/constants'; // 1. FIX: Import type from lib/types
-import { CalendarDays, ArrowLeft } from 'lucide-react';
-import ImageSlider from '@/components/ImageSlider'; // We can reuse this!
+import { type BlogPost } from '@/lib/constants';
+import { CalendarDays} from 'lucide-react';
+import ImageSlider from '@/components/ImageSlider';
 
 interface BlogPostPageProps {
     params: Promise<{ slug: string }>;
 }
 
-// Define the async data fetching function
 async function getPost(slug: string) {
     const normalizedSlug = slug.toLowerCase();
     const { data, error } = await supabase
@@ -25,7 +23,6 @@ async function getPost(slug: string) {
     return data as BlogPost | null;
 }
 
-// Helper function to format the date
 const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -44,7 +41,7 @@ const BlogPostDetailPage = async ({ params }: BlogPostPageProps) => {
 
     return (
         <div className="w-full h-full flex flex-col gap-4 py-6 font-space-grotesk">
-            <h1 className="font-extrabold text-6xl">{post.title}</h1>
+            <h1 className="font-extrabol text-4xl lg:text-6xl">{post.title}</h1>
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">{post.excerpt}</p>
 
             <div className="flex gap-2 items-center text-subtext dark:text-Dark_subtext">

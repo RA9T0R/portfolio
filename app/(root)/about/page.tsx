@@ -1,13 +1,10 @@
 import React from 'react';
+import {GraduationCap, CodeXml} from 'lucide-react';
+import { LANGUAGES, WEBSITE, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
 import Image from 'next/image';
-import {Mail, Phone, MapPin, GraduationCap, SquareArrowOutUpRight} from 'lucide-react'; // Example icons
 import Link from 'next/link';
 import {FacebookIcon, GitHubIcon, GmailIcon} from "@/components/Icon";
 import TechList from "@/components/TechList";
-import { LANGUAGES, WEBSITE, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
-
-
-// --- About Page Component ---
 
 const About = () => {
     return (
@@ -68,7 +65,6 @@ const About = () => {
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20">
                         <h3 className="text-md lg:text-lg 2xl:text-2xl font-bold mb-6 flex items-center gap-3"><GraduationCap /> Education</h3>
 
-                        {/* Education Item 1 */}
                         <div className="mb-4 pb-4 last:border-b-0 last:pb-0">
                             <div className="flex justify-between items-start">
                                 <p className="font-semibold">King MongoKit&#39;s University of Technology North Bangkok</p>
@@ -78,7 +74,6 @@ const About = () => {
                             <p className="text-sm text-subtext dark:text-Dark_subtext">Applied Science / Computer Science</p>
                         </div>
 
-                        {/* Education Item 2 */}
                         <div>
                             <div className="flex justify-between items-start">
                                 <p className="font-semibold">Matthayom Watnairong English Program School</p>
@@ -91,7 +86,10 @@ const About = () => {
 
                     {/* Skills Card */}
                     <div className="bg-surface dark:bg-Dark_surface p-6 rounded-2xl border border-subtext/20">
-                        <h3 className="font-bold text-xl mb-4">Skills</h3>
+                        <h3 className="text-md lg:text-lg 2xl:text-2xl font-bold mb-6 flex items-center gap-3">
+                            <CodeXml/>
+                            Skills
+                        </h3>
 
                         <div className="flex flex-col gap-4">
                             {/* Languages */}

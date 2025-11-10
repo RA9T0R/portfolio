@@ -3,11 +3,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { type Project, type ProjectImage } from '@/lib/constants';
 import ImageUploader from "@/components/ImageUploader";
 import { Loader2 } from 'lucide-react';
-import { notFound } from 'next/navigation';
 
 // --- Type Definitions ---
 type ProjectFormData = {
@@ -37,9 +35,6 @@ const AdminTextarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(({ la
 ));
 AdminTextarea.displayName = "AdminTextarea";
 
-// --- Main Edit Project Page Component ---
-
-// FIX 1: Change params type to Promise
 interface EditProjectPageProps {
     params: Promise<{ slug: string }>;
 }
@@ -67,21 +62,15 @@ const EditProjectPage = ({ params }: EditProjectPageProps) => {
         technologies: '',
     });
 
-    // --- Data Fetching and Hydration Effect ---
-    // FIX 2: Create a separate effect to get the slug and fetch data
     useEffect(() => {
-        // 3. FIX: Create an async function inside useEffect to handle await
         const initializeData = async () => {
-            // FIX 4: Await the params prop to get the slug
             const { slug } = await params;
 
-            // --- Authentication Check ---
             const { data: { user } } = await supabase.auth.getUser();
             if (!user) {
                 return router.push('/login');
             }
 
-            // --- Data Fetching ---
             const { data: project, error } = await supabase
                 .from('projects')
                 .select('*')
@@ -90,11 +79,9 @@ const EditProjectPage = ({ params }: EditProjectPageProps) => {
 
             if (error || !project) {
                 console.error("Error fetching project:", error);
-                // We use the temporary 404 behavior here, but in production, we redirect to dashboard
                 return router.push('/dashboard?error=notfound');
             }
 
-            // 5. Hydrate the form data
             setInitialProject(project);
             setFormData({
                 title: project.title,
@@ -114,9 +101,7 @@ const EditProjectPage = ({ params }: EditProjectPageProps) => {
         };
 
         initializeData();
-    }, [params, router]); // Depend only on params and router
-
-    // --- Handlers ---
+    }, [params, router]);
 
     const handleImageUpload = useCallback((uploadedImages: ProjectImage[]) => {
         setFormData(prev => ({
@@ -190,7 +175,6 @@ const EditProjectPage = ({ params }: EditProjectPageProps) => {
         }
     };
 
-    // --- Render Loading/Not Found States ---
     if (isLoading) {
         return (
             <div className="w-full h-screen flex justify-center items-center">

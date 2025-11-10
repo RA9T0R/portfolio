@@ -1,26 +1,17 @@
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Github, ExternalLink, Dot } from 'lucide-react';
-
-// Database and Types
+import { ExternalLink, Dot } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
-import { type Project } from '@/lib/constants'; // 1. FIX: Import type from lib/types
-
-// Components
+import { type Project } from '@/lib/constants';
 import ImageSlider from '@/components/ImageSlider';
 import { StatusBadge } from "@/components/ProjectCard";
+import {GitHubIcon} from "@/components/Icon";
 
-
-// 2. FIX: Change the props interface to use a Promise
 interface ProjectDetailPageProps {
     params: Promise<{ slug: string }>;
 }
 
-// Define the async data fetching function
 async function getProject(slug: string) {
-    // This function is now safe because 'slug' will be a valid string
     const normalizedSlug = slug.toLowerCase();
 
     const { data, error } = await supabase
@@ -35,7 +26,6 @@ async function getProject(slug: string) {
     return data as Project | null;
 }
 
-// Helper: A simple component for a list item
 const DetailListItem = ({ children }: { children: React.ReactNode }) => (
     <li className="flex items-start text-subtext dark:text-Dark_subtext">
         <Dot size={24} className="flex-shrink-0 text-primary mt-0.5" />
@@ -43,12 +33,8 @@ const DetailListItem = ({ children }: { children: React.ReactNode }) => (
     </li>
 );
 
-// --- Project Details Page Component (async Server Component) ---
 const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
-
-    // 3. FIX: Await the params to get the slug
     const { slug } = await params;
-
     const project = await getProject(slug);
 
     if (!project) {
@@ -57,7 +43,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
 
     return (
         <div className="w-full h-full flex flex-col gap-4 py-6 font-space-grotesk">
-            <h1 className="font-extrabold text-6xl">{project.title}</h1>
+            <h1 className="font-extrabold text-4xl lg:text-6xl">{project.title}</h1>
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">
                 {project.short_description}
             </p>
@@ -78,7 +64,7 @@ const ProjectDetailsPage = async ({ params }: ProjectDetailPageProps) => {
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 text-subtext transition-colors hover:bg-surface hover:dark:bg-Dark_surface p-2 rounded-lg"
                             >
-                                <Github size={20} />
+                                <GitHubIcon />
                                 GitHub
                             </a>
                             {project.live_demo_url && (

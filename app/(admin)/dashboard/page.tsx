@@ -12,7 +12,6 @@ const AdminDashboard = () => {
     const [projects, setProjects] = useState<Project[]>([]);
     const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
 
-    // 3. FIX: Initialize 'user' state with 'null' and provide the correct type
     const [user, setUser] = useState<User | null>(null);
 
     const [isLoading, setIsLoading] = useState(true);
@@ -32,14 +31,13 @@ const AdminDashboard = () => {
         else if (data) setBlogPosts(data);
     };
 
-    // 4. FIX: useEffect now correctly calls and awaits fetchUser
     useEffect(() => {
         const fetchUser = async () => {
             const { data: { user } } = await supabase.auth.getUser();
             if (user) {
                 setUser(user);
                 await fetchProjects();
-                await fetchBlogPosts(); // 4. Fetch blogs on load
+                await fetchBlogPosts();
             } else {
                 router.push('/login');
             }

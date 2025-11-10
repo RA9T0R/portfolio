@@ -1,9 +1,7 @@
 "use client";
-
-import React, { useState, useEffect, useCallback } from 'react'; // 1. IMPORT useCallback
+import React, { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { type Project, type ProjectImage } from '@/lib/constants';
 import ImageUploader from "@/components/ImageUploader";
 import { Loader2 } from 'lucide-react';

@@ -20,12 +20,12 @@ const BlogCard = ({ post }: { post: BlogPost }) => {
 
             <p className="font-extralight text-sm text-text dark:text-Dark_text line-clamp-3 flex-1 mb-4">{post.excerpt}</p>
 
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col lg:flex-row gap-2 justify-between lg:items-center">
                 <div className="flex gap-2 text-subtext dark:text-Dark_subtext">
                     <CalendarDays strokeWidth={1} />
                     {formatDate(post.date)} | {post.author}
                 </div>
-                <Link href={`/blogs/${post.slug}`} className="text-white p-2 rounded-xl bg-secondary mt-auto flex gap-2 hover:gap-3 hover:scale-105 transition-all duration-150 font-semibold text-sm">
+                <Link href={`/blogs/${post.slug}`} className="justify-center items-center text-white p-2 rounded-xl bg-secondary mt-auto flex gap-2 hover:gap-3 hover:scale-105 transition-all duration-150 font-semibold text-sm">
                     Read More
                     <ArrowRight size={16} />
                 </Link>
