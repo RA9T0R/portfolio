@@ -41,7 +41,7 @@ const BlogPostDetailPage = async ({ params }: BlogPostPageProps) => {
 
     return (
         <div className="w-full h-full flex flex-col gap-4 py-6 font-space-grotesk">
-            <h1 className="font-extrabol text-4xl lg:text-6xl">{post.title}</h1>
+            <h1 className="font-extrabold text-4xl lg:text-6xl">{post.title}</h1>
             <p className="lg:w-1/2 text-subtext dark:text-Dark_subtext">{post.excerpt}</p>
 
             <div className="flex gap-2 items-center text-subtext dark:text-Dark_subtext">

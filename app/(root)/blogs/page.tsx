@@ -13,7 +13,7 @@ async function getBlogPosts() {
         console.error("Error fetching blog posts:", error);
         return [];
     }
-    return data?.reverse() as BlogPost[];
+    return data as BlogPost[];
 }
 
 const Blogs = async () => {
@@ -25,7 +25,7 @@ const Blogs = async () => {
                 This is my blog, where I post updates everything i want.
             </p>
             <p className="hidden lg:block lg:w-[60%] text-subtext dark:text-Dark_subtext">
-                This is my blog, where I post updates everything i want such as my upcoming/launched projects and give insights on what i've learned from each one. Additionally, I may write posts about the industry as a whole.
+                This is my blog, where I post updates everything i want such as my upcoming/launched projects and give insights on what i&#39;ve learned from each one. Additionally, I may write posts about the industry as a whole.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                 {blog_posts.map((post: BlogPost) => (
