@@ -120,7 +120,7 @@ async function getBlogPosts() {
     const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
-        .order('date', { ascending: false }); // Show newest first
+        .order('created_at', { ascending: false }); // Show newest first
 
     if (error) {
         console.error("Error fetching blog posts:", error);
@@ -143,7 +143,7 @@ const Homepage = async () => {
     const blogs_data = await getBlogPosts();
     const recentProjects = projects_data.slice(0, 3);
     const recentBlogs = blogs_data.slice(0, 2);
-
+    console.log(recentBlogs)
     const total_projects = projects_data.length
     const total_blogs = blogs_data.length
     const technologies = LANGUAGES.length + WEBSITE.length + DEV_TOOLS.length + LIBRARIES.length;
