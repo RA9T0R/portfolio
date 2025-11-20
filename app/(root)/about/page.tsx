@@ -24,7 +24,7 @@ const About = () => {
                                 fill={true}
                                 className="rounded-full object-cover"
                                 sizes="(max-width: 640px) 16vw, (max-width: 1024px) 20vw, 24vw"
-                            />
+                            />z
                         </div>
 
                         <div className="flex flex-col items-start w-full max-w-md mt-5">

@@ -8,7 +8,8 @@ import { LANGUAGES, WEBSITE, DEV_TOOLS, LIBRARIES } from "@/lib/constants";
 import TechList from "@/components/TechList";
 import {supabase} from "@/lib/supabaseClient";
 
-// 2. Define types for StatCard props
+export const dynamic = 'force-dynamic';
+
 interface StatCardProps {
     path: string;
     title: string;

@@ -3,11 +3,13 @@ import BlogCard from '@/components/BlogCard';
 import { supabase } from '@/lib/supabaseClient';
 import { type BlogPost } from '@/lib/constants';
 
+export const dynamic = 'force-dynamic';
+
 async function getBlogPosts() {
     const { data, error } = await supabase
         .from('blog_posts')
         .select('*')
-        .order('date', { ascending: false }); // Show newest first
+        .order('created_at', { ascending: false });
 
     if (error) {
         console.error("Error fetching blog posts:", error);

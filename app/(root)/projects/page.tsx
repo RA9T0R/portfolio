@@ -1,11 +1,11 @@
 import React from 'react'
 import ProjectCard from "@/components/ProjectCard";
-import { supabase } from '@/lib/supabaseClient'; // Import supabase
+import { supabase } from '@/lib/supabaseClient';
 import { type Project } from '@/lib/constants';
 
-// Define the async data fetching function
+export const dynamic = 'force-dynamic';
+
 async function getProjects() {
-    // Select all projects, ordered by creation date
     const { data, error } = await supabase
         .from('projects')
         .select('*')
@@ -15,7 +15,6 @@ async function getProjects() {
         console.error("Error fetching projects:", error);
         return [];
     }
-    // Cast the data to your Project type array
     return data as Project[];
 }
 
