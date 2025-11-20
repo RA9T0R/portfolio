@@ -142,7 +142,7 @@ const Homepage = async () => {
     const projects_data = await getProjects();
     const blogs_data = await getBlogPosts();
     const recentProjects = projects_data.slice(0, 3);
-    const recentBlogs = blogs_data.slice(0, );
+    const recentBlogs = blogs_data.slice(0, 2);
 
     const total_projects = projects_data.length
     const total_blogs = blogs_data.length
