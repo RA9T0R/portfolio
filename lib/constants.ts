@@ -16,7 +16,6 @@ export const icons = {
     Newspaper,
     User,
     Mail,
-
 };
 
 // 2. Define and export the type

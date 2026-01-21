@@ -33,9 +33,9 @@ const About = () => {
                         </div>
 
                         <p className="text-text dark:text-Dark_text w-full max-w-md mb-6 text-sm mt-5 text-start">
-                            I&#39;m a third-year university student eager to gain hands-on experience during the school break. Passionate about web development, web design.
-                            I thrive on learning new technologies quickly and adapting to challenges. Additionally, I’m exploring 3D design and looking forward to experimenting
-                            with it in the future.
+                            Third-year Computer Science student seeking a Cooperative Education opportunity, with a keen interest in Data Science
+                            and AI. Built on a solid foundation in Software Engineering and Web Development. A responsible learner with a
+                            strong sense of ownership, committed to executing and completing assigned tasks effectively
                         </p>
 
                         {/* Social Icons (Placeholder) */}
@@ -67,7 +67,7 @@ const About = () => {
 
                         <div className="mb-4 pb-4 last:border-b-0 last:pb-0">
                             <div className="flex justify-between items-start">
-                                <p className="font-semibold">King MongoKit&#39;s University of Technology North Bangkok</p>
+                                <p className="font-semibold">King MongKut&#39;s University of Technology North Bangkok</p>
                                 <span className="text-xs text-subtext dark:text-Dark_subtext font-light hidden lg:block">2020 - Current , GPAX : 3.68</span>
                             </div>
                             <span className="text-xs text-subtext dark:text-Dark_subtext font-light block lg:hidden">2020 - Current , GPAX : 3.68</span>

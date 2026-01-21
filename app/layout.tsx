@@ -32,9 +32,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" enableSystem defaultTheme="system">
           <div className="flex min-h-screen bg-bg dark:bg-Dark_bg">
             <Sidebar/>
-              <main className="flex-1 md:px-3 lg:px-6 xl:px-12 overflow-auto transition-all duration-300 text-text dark:text-Dark_text">
-                {children}
-              </main>
+            <main className="flex-1 md:px-3 lg:px-6 xl:px-12 overflow-auto transition-all duration-300 text-text dark:text-Dark_text">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>
