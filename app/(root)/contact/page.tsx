@@ -186,7 +186,7 @@ const Contact = () => {
                         {/* --- NEW RESUME BUTTON --- */}
                         <div className="mt-4 pt-4 border-t border-subtext/20">
                             <a
-                                href="/resume.pdf"
+                                href="/resume_new.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 transition-colors text-white font-bold py-3 px-4 rounded-xl w-full"
