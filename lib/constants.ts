@@ -315,8 +315,6 @@ export const LANGUAGES: string[] = [
     "TypeScript",
     "C++",
     "Java",
-
-    // Add more languages
 ];
 
 export const WEBSITE: string[] = [
@@ -330,7 +328,6 @@ export const WEBSITE: string[] = [
     "FastAPI",
     "Streamlit",
     "Vite",
-    // Add more frameworks
 ];
 
 export const DEV_TOOLS: string[] = [
@@ -341,8 +338,10 @@ export const DEV_TOOLS: string[] = [
     "Postman",
     "Supabase",
     "MongoDB",
-    "Postgresql"
-    // Add "WebStorm", "VS Code", "Figma", etc.
+    "Postgresql",
+    "Docker",
+    "MinIO",
+    "Stripe"
 ];
 
 export const LIBRARIES: string[] = [
@@ -351,5 +350,6 @@ export const LIBRARIES: string[] = [
     "Numpy",
     "Chart.js",
     "Socket.io",
-    // Add "Mongoose", "Prisma", etc.
+    "PyTorch",
+    "Three.js",
 ];

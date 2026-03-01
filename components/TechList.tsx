@@ -6,6 +6,7 @@ import {FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaJava, FaHtml5, FaCss3
 import { BiLogoPostgresql } from "react-icons/bi";
 import { IoLogoJavascript } from "react-icons/io5";
 import { VscVscode } from "react-icons/vsc";
+import { TbBrandThreejs } from "react-icons/tb";
 import {
     SiMongodb,
     SiTailwindcss,
@@ -17,7 +18,8 @@ import {
     SiFlask,SiPandas,SiNumpy,
     SiTensorflow,SiVite,
     SiChartdotjs,SiCplusplus,SiFastapi,
-    SiSupabase, SiFigma, SiWebstorm, SiPostman
+    SiSupabase, SiFigma, SiWebstorm, SiPostman,
+    SiPytorch, SiMinio, SiStripe
 } from 'react-icons/si';
 
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -54,6 +56,10 @@ const iconMap: { [key: string]: React.ReactNode } = {
     "Java": <FaJava className="size-6 lg:size-4 xl:size-6"/>,
     "Unreal_engine": <SiUnrealengine  className="size-6 lg:size-4 xl:size-6"/>,
     "Blender": <SiBlender  className="text-orange-400 size-6 lg:size-4 xl:size-6"/>,
+    "PyTorch": <SiPytorch className="text-orange-600 size-6 lg:size-4 xl:size-6" />,
+    "Three.js": <TbBrandThreejs className="text-black dark:text-white size-6 lg:size-4 xl:size-6" />,
+    "MinIO": <SiMinio className="text-red-600 size-6 lg:size-4 xl:size-6" />,
+    "Stripe": <SiStripe className="text-indigo-500 size-6 lg:size-4 xl:size-6" />,
 };
 
 const DefaultIcon = ({ name }: { name: string }) => (
