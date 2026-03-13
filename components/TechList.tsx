@@ -19,8 +19,9 @@ import {
     SiTensorflow,SiVite,
     SiChartdotjs,SiCplusplus,SiFastapi,
     SiSupabase, SiFigma, SiWebstorm, SiPostman,
-    SiPytorch, SiMinio, SiStripe, SiLanggraph, SiLangchain
+    SiPytorch, SiMinio, SiStripe, SiLangchain
 } from 'react-icons/si';
+import { PiGraph } from "react-icons/pi";
 import { ImDatabase } from "react-icons/im";
 
 
@@ -64,7 +65,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
     "Stripe": <SiStripe className="text-indigo-500 size-6 lg:size-4 xl:size-6" />,
     "ChromaDB": <ImDatabase className="text-blue-400 size-6 lg:size-4 xl:size-6" />,
     "LangChain": <SiLangchain  className="text-green-500 size-6 lg:size-4 xl:size-6" />,
-    "LangGraph": <SiLanggraph className="text-indigo-400 size-6 lg:size-4 xl:size-6" />
+    "LangGraph": <PiGraph className="text-indigo-400 size-6 lg:size-4 xl:size-6" />
 };
 
 const DefaultIcon = ({ name }: { name: string }) => (
