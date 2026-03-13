@@ -2,7 +2,7 @@
 
 import React from 'react';
 // Import the icons you need
-import {FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaJava, FaHtml5, FaCss3Alt  } from 'react-icons/fa';
+import {FaReact, FaNodeJs, FaPython, FaDocker, FaGitAlt, FaJava, FaHtml5, FaCss3Alt, FaBrain} from 'react-icons/fa';
 import { BiLogoPostgresql } from "react-icons/bi";
 import { IoLogoJavascript } from "react-icons/io5";
 import { VscVscode } from "react-icons/vsc";
@@ -19,8 +19,10 @@ import {
     SiTensorflow,SiVite,
     SiChartdotjs,SiCplusplus,SiFastapi,
     SiSupabase, SiFigma, SiWebstorm, SiPostman,
-    SiPytorch, SiMinio, SiStripe
+    SiPytorch, SiMinio, SiStripe, SiLanggraph, SiLangchain
 } from 'react-icons/si';
+import { ImDatabase } from "react-icons/im";
+
 
 const iconMap: { [key: string]: React.ReactNode } = {
     "React": <FaReact className="text-primary size-6 lg:size-4 xl:size-6" />,
@@ -60,6 +62,9 @@ const iconMap: { [key: string]: React.ReactNode } = {
     "Three.js": <TbBrandThreejs className="text-black dark:text-white size-6 lg:size-4 xl:size-6" />,
     "MinIO": <SiMinio className="text-red-600 size-6 lg:size-4 xl:size-6" />,
     "Stripe": <SiStripe className="text-indigo-500 size-6 lg:size-4 xl:size-6" />,
+    "ChromaDB": <ImDatabase className="text-blue-400 size-6 lg:size-4 xl:size-6" />,
+    "LangChain": <SiLangchain  className="text-green-500 size-6 lg:size-4 xl:size-6" />,
+    "LangGraph": <SiLanggraph className="text-indigo-400 size-6 lg:size-4 xl:size-6" />
 };
 
 const DefaultIcon = ({ name }: { name: string }) => (

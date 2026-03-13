@@ -339,6 +339,7 @@ export const DEV_TOOLS: string[] = [
     "Supabase",
     "MongoDB",
     "Postgresql",
+    "ChromaDB",
     "Docker",
     "MinIO",
     "Stripe"
@@ -351,5 +352,7 @@ export const LIBRARIES: string[] = [
     "Chart.js",
     "Socket.io",
     "PyTorch",
+    "LangChain",
+    "LangGraph",
     "Three.js",
 ];
