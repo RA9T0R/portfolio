@@ -340,6 +340,8 @@ export const DEV_TOOLS: string[] = [
     "MongoDB",
     "Postgresql",
     "ChromaDB",
+    "SQLite",
+    "Prisma",
     "Docker",
     "MinIO",
     "Stripe"

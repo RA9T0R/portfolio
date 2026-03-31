@@ -8,7 +8,7 @@ import { IoLogoJavascript } from "react-icons/io5";
 import { VscVscode } from "react-icons/vsc";
 import { TbBrandThreejs } from "react-icons/tb";
 import {
-    SiMongodb,
+    SiMongodb,SiPrisma,
     SiTailwindcss,
     SiNextdotjs,
     SiTypescript,
@@ -19,7 +19,7 @@ import {
     SiTensorflow,SiVite,
     SiChartdotjs,SiCplusplus,SiFastapi,
     SiSupabase, SiFigma, SiWebstorm, SiPostman,
-    SiPytorch, SiMinio, SiStripe, SiLangchain
+    SiPytorch, SiMinio, SiStripe, SiLangchain,SiSqlite
 } from 'react-icons/si';
 import { PiGraph } from "react-icons/pi";
 import { ImDatabase } from "react-icons/im";
@@ -32,6 +32,8 @@ const iconMap: { [key: string]: React.ReactNode } = {
     "MongoDB": <SiMongodb className="text-green-600 size-6 lg:size-4 xl:size-6" />,
     "Postgresql": <BiLogoPostgresql className="text-blue-600 size-6 lg:size-4 xl:size-6" />,
     "Socket.io": <SiSocketdotio className="text-gray-400 size-6 lg:size-4 xl:size-6" />,
+    "SQLite": <SiSqlite className="text-gray-400 size-6 lg:size-4 xl:size-6" />,
+    "Prisma": <SiPrisma  className="text-black-400 size-6 lg:size-4 xl:size-6" />,
     "TailwindCSS": <SiTailwindcss className="text-cyan-400 size-6 lg:size-4 xl:size-6" />,
     "HTML5": <FaHtml5 className="text-orange-400 size-6 lg:size-4 xl:size-6" />,
     "CSS": <FaCss3Alt className="text-blue-400 size-6 lg:size-4 xl:size-6" />,
